@@ -3,31 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Pokémon Oro GBC</title>
+    <title>Pokémon NFC</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
         html, body {
-            margin: 0;
-            padding: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #000000;
-            overflow: hidden;
-            touch-action: none;
+            margin: 0; padding: 0;
+            width: 100vw; height: 100vh;
+            background-color: #000;
+            overflow: hidden; touch-action: none;
         }
-        #game-wrapper {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #game {
-            width: 100%;
-            height: 100%;
-        }
+        #game-wrapper { width: 100%; height: 100%; }
+        #game { width: 100%; height: 100%; }
     </style>
 </head>
 <body>
@@ -37,25 +23,19 @@
     </div>
 
     <script type="text/javascript">
-        // Configuración de EmulatorJS
         EJS_player = '#game';
         
-        // Consola objetivo: 'gba' (Game Boy Advance). 
-        // Cambia a 'gbc' si usas Pokémon Cristal/Amarillo o 'nds' para Nintendo DS.
-        EJS_core = 'gbc';
+        // Cambia a 'gbc' para Game Boy Color o 'gba' para Game Boy Advance
+        EJS_core = 'gbc'; 
         
-        // Nombre del archivo de tu ROM subida a GitHub.
-        // Asegúrate de que coincida EXACTAMENTE con el nombre de tu archivo subido.
-        EJS_gameUrl = 'Pokemon_oro.gbc'; 
+        // Escribe aquí el nombre EXACTO de tu archivo subido a GitHub
+        EJS_gameUrl = 'pokemon.gbc'; 
         
-        // Servidor CDN desde donde se descarga el motor del emulador
+        // Usamos la versión 4.0.0 que no da error al descargar el core
         EJS_pathtodata = 'https://cdn.emulatorjs.org/v4.0.0/data/';
-        
-        // Habilita guardar automáticamente
         EJS_startOnLoaded = true;
     </script>
     
-    <!-- Carga del emulador externo -->
     <script src="https://cdn.emulatorjs.org/v4.0.0/data/loader.js"></script>
 
 </body>
