@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Pokémon NFC</title>
     <style>
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body {
-            margin: 0; padding: 0;
-            width: 100vw; height: 100vh;
-            background: #111;
+            width: 100%; height: 100%;
+            background-color: #000000;
+            overflow: hidden;
+            touch-action: none;
+            font-family: Arial, sans-serif;
+        }
+        #display-container {
+            width: 100vw;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            font-family: sans-serif;
-            color: #fff;
         }
         iframe {
             width: 100%;
@@ -27,15 +29,23 @@
 </head>
 <body>
 
-    <iframe id="emulator-frame"></iframe>
+<div id="display-container">
+    <iframe id="game-frame" allow="autoplay; gamepad; fullscreen"></iframe>
+</div>
 
-    <script>
-        // Enlace directo al reproductor estático sin dependencias rotas de CDN
-        const romPath = 'Pokemon_oro.gbc'; // Cambia por el nombre exacto de tu archivo si es distinto
-        
-        const emulatorUrl = https://gameboy-online.github.io/?rom=${encodeURIComponent(romPath)};
-        document.getElementById('emulator-frame').src = emulatorUrl;
-    </script>
+<script>
+    // INSTRUCCIONES:
+    // 1. Sube tu ROM a GitHub con el nombre exacto: pokemon.gba (o pokemon.gbc)
+    // 2. Si tu juego es de Game Boy Color, cambia 'gba' por 'gbc' en la línea de abajo.
+    
+    const TIPO_CONSOLA = 'gbc'; // Opciones: 'gba' o 'gbc'
+    const NOMBRE_ROM = 'Pokemon_oro.gbc'; // Nombre exacto de tu archivo en GitHub
+
+    // Usamos el mirror web compilado sin CORS ni restricciones de descarga WASM
+    const romUrl = window.location.origin + window.location.pathname.replace('index.html', '') + NOMBRE_ROM;
+    
+    document.getElementById('game-frame').src = https://webretro.github.io/?core=${TIPO_CONSOLA}&rom=${encodeURIComponent(romUrl)};
+</script>
 
 </body>
 </html>
